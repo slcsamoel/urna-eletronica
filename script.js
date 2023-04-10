@@ -9,6 +9,10 @@ let etapaAtual = 0;
 let numero = '';
 let votoBranco = false;
 let votos = [];
+const FIM_HIT = new Audio();
+
+FIM_HIT.src = './sons/confirma-urna.mp3';
+
 
 function comecarEtapa(){
     let etapa = etapas[etapaAtual];
@@ -120,8 +124,9 @@ function confirma(){
         if(etapas[etapaAtual] !== undefined){
             comecarEtapa();
         }else{
-           document.querySelector('.tela').innerHTML = `<div class="aviso-gigante pisca">FIM</div>`;     
-            console.log(votos);
+            document.querySelector('.tela').innerHTML = `<div class="aviso-gigante pisca">FIM</div>`;  
+            comecarEtapa();   
+            FIM_HIT.play();
         }
     }
 
